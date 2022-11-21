@@ -6,12 +6,13 @@ use Illuminate\Http\Request;
 use App\Politics;
 use App\LatestNews;
 use App\Sport;
+use Carbon\Carbon;
 
 class PagesController extends Controller
 {
     public function index(){
         // return view('pages.index');
-        $politics = Politics::paginate(3);
+        $politics = \App\Politics::paginate(3);
         $latestnews = LatestNews::latest()->paginate(3);
         $sport = Sport::latest()->paginate(3);
         return view('pages.index',compact('politics', 'latestnews', 'sport'));   

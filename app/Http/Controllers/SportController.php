@@ -8,6 +8,26 @@ use App\LatestNews;
 
 class SportController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=> ['index','show']]);
+    }
+
+
+    public function sportview(){
+        // $politics = Politics::all();
+        // return view('politicsview',['politics'=> $politics]);
+
+        // $politics = Politics::latest()->paginate(3);
+        // return view('politicsview', compact('politics'))
+        // ->with('i', (request()->input('page', 1) - 1) *3);
+
+        $sports = Sport::paginate(3);
+        return view('sportview',compact('sports'));
+        
+    }
+
+
     /**
      * Display a listing of the resource.
      *
@@ -15,10 +35,11 @@ class SportController extends Controller
      */
     public function index()
     {
-        $sport = Sport::latest()->paginate(3);
+        // $sports = \App\Sport::paginate(3);
+        $sports = Sport::latest()->paginate(3);
         $latestnews = LatestNews::latest()->paginate(3);
-         return view('sport.index', compact('sport', 'latestnews'))  
-         ->with('i', (request()->input('page', 1) - 1) *3);
+         return view('sport.index', compact('sports', 'latestnews'))  
+         ->with('i', (request()->input('page', 1) - 1) *3);  
     }
 
     /**
@@ -42,6 +63,7 @@ class SportController extends Controller
         $request->validate([
             'title'=>'required',
             'body' =>'required',
+            'preview'=> 'required',
             'image' =>'image|nullable|max:1999|required', 
         ]);
 
@@ -59,9 +81,11 @@ class SportController extends Controller
         }
         
          $sport = new Sport;
-        //  $politics->user_id = auth()->user()->id;
+          $sport->user_id = auth()->user()->id;
          $sport ->title =$request->input('title');
           $sport->body = $request->input('body');
+          $sport->preview = $request->input('preview');
+
           $sport->image =$fileNameToStore;
         
           $sport-> save();
@@ -88,7 +112,8 @@ class SportController extends Controller
      */
     public function edit($id)
     {
-        //
+        $sport = Sport::find($id);
+        return view ('sport.edit')->with('sport',$sport);
     }
 
     /**
@@ -100,7 +125,40 @@ class SportController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'body' =>'required',
+            'preview'=> 'required',
+            'image' =>'image|nullable|max:1999', 
+        ]);
+
+        /**Handle File Upload */
+
+
+        if($request->hasFile('image')){
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename .'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        }else{
+            $fileNameToStore ='noimage.jpeg';
+        }
+
+
+         $sport = Sport::findOrFail($id);
+         $sport->user_id = auth()->user()->id;
+         $sport ->title =$request->input('title');
+          $sport->body = $request->input('body');
+          $sport->preview = $request->input('preview');
+
+          if($request->hasFile('image')){
+            $sport->image = $fileNameToStore;
+            }
+  
+          
+          $sport-> save();
+          return redirect('/sportview')->with ('success','Sport Successfully Updated');
     }
 
     /**
@@ -111,6 +169,10 @@ class SportController extends Controller
      */
     public function destroy($id)
     {
-        //
+        
+       $sports = Sport::find($id);
+       $sports->delete();
+
+       return redirect('sportview')->with ('success','Sport Successfully Deleted');
     }
 }

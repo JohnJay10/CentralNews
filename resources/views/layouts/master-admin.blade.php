@@ -12,7 +12,7 @@
   <!-- CSRF Token -->
   <meta name="_token" content="oOLyGNNeqfhi9zfCkncpLkbOwrD2deERm7QFtEFd">
   
-  <link rel="shortcut icon" href="favicon.ico">
+  <link rel="shortcut icon" href="/site/assets/images/favlogo.png" />
 
   <!-- plugin css -->
   <link media="all" type="text/css" rel="stylesheet" href="/admin/assets/plugins/%40mdi/font/css/materialdesignicons.min.css">
@@ -21,8 +21,8 @@
   <!-- end plugin css -->
 
     <link media="all" type="text/css" rel="stylesheet" href="/admin/assets/plugins/bootstrap-datepicker/css/bootstrap-datepicker.min.css">
-    <link media="all" type="text/css" rel="stylesheet" href="../admin/assets/plugins/icheck/skins/all.css">
-    <link media="all" type="text/css" rel="stylesheet" href="../admin/assets/plugins/select2/css/select2.min.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/admin/assets/plugins/icheck/skins/all.css">
+    <link media="all" type="text/css" rel="stylesheet" href="/admin/assets/plugins/select2/css/select2.min.css">
   <!-- common css -->
   <link media="all" type="text/css" rel="stylesheet" href="/admin/css/app.css">
   <!-- end common css -->
@@ -57,7 +57,7 @@
           
           <li class="nav-item nav-profile dropdown">
             <a class="nav-link" href="#" data-toggle="dropdown" id="profileDropdown">
-              <img src="/admin/assets/images/faces/face28.jpg" alt="USER"/>
+              <h4>  {{ Auth::user()->name }}</h4>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
               <a class="dropdown-item">
@@ -103,7 +103,7 @@
        <div class="collapse " id="basic-ui">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item ">
-            <a class="nav-link" href="/politics/create">Create Politics Post</a>
+            <a class="nav-link" href="/politics/create"> Politics Post Create</a>
           </li>
           <li class="nav-item ">
             <a class="nav-link" href="{{ route('politicsview') }}">Politics Post</a>
@@ -121,10 +121,10 @@
       <div class="collapse " id="icons">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item ">
-            <a class="nav-link" href="/latestnews/create">create Latest News</a>
+            <a class="nav-link" href="/latestnews/create"> Latest News Create</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="icons/flag-icons">Latest News Post</a>
+            <a class="nav-link" href="{{ route('latestnewsview') }}">Latest News Post</a>
           </li>
         </ul>
       </div>
@@ -140,10 +140,10 @@
       <div class="collapse " id="advanced-ui">
         <ul class="nav flex-column sub-menu">
           <li class="nav-item ">
-            <a class="nav-link" href="/sport/create">Create Sport Post</a>
+            <a class="nav-link" href="/sport/create"> Sport Post Create</a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="advanced-ui/clipboard.html">Sports Post</a>
+            <a class="nav-link" href="{{ route('sportview') }}">Sports Post</a>
           </li>
           
         </ul>
@@ -207,7 +207,7 @@
       <div class="row">
         <div class="col-12 col-xl-5 mb-4 mb-xl-0">
           <h4 class="font-weight-bold">Hi, Welcomeback!</h4>
-          <h4 class="font-weight-normal mb-0">CENTRALNEWS.NG</h4>
+          <h4 class="font-weight-normal mb-0">{{ config('app.name', 'CENTRALNEWS.NG') }}</h4>
         </div>
         
       </div>
@@ -222,7 +222,7 @@
             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">34040</h3>
             <i class="ti-calendar icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-warning">2.00% <span class="text-body ml-1"><small>(30 days)</small></span></p>
+          
         </div>
       </div>
     </div>
@@ -234,31 +234,31 @@
             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">47033</h3>
             <i class="ti-user icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-danger">0.22% <span class="text-body ml-1"><small>(30 days)</small></span></p>
+          
         </div>
       </div>
     </div>
     <div class="col-md-3 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <p class="card-title text-md-center text-xl-left">Today’s Bookings</p>
+          <p class="card-title text-md-center text-xl-left">Number of LatestNews Clicks</p>
           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">40016</h3>
             <i class="ti-agenda icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-success">10.00%<span class="text-body ml-1"><small>(30 days)</small></span></p>
+         
         </div>
       </div>
     </div>
     <div class="col-md-3 grid-margin stretch-card">
       <div class="card">
         <div class="card-body">
-          <p class="card-title text-md-center text-xl-left">Total Items Bookings</p>
+          <p class="card-title text-md-center text-xl-left">Total clicks</p>
           <div class="d-flex flex-wrap justify-content-between justify-content-md-center justify-content-xl-between align-items-center">
             <h3 class="mb-0 mb-md-2 mb-xl-0 order-md-1 order-xl-0">61344</h3>
             <i class="ti-layers-alt icon-md text-muted mb-0 mb-md-3 mb-xl-0"></i>
           </div>  
-          <p class="mb-0 mt-2 text-success">22.00%<span class="text-body ml-1"><small>(30 days)</small></span></p>
+         
         </div>
       </div>
     </div>
@@ -274,17 +274,16 @@
      
         <footer class="footer">
   <div class="container-fluid clearfix">
-    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="{{ route('logout') }}" target="_blank">CENTRALNEWS.NG</a>. All rights reserved.</span>
-    <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Hand-crafted & made with <i class="mdi mdi-heart text-danger"></i>
-    </span>
+    <span class="text-muted d-block text-center text-sm-left d-sm-inline-block">Copyright © 2020 <a href="{{ route('home') }}" target="_blank">CENTRALNEWS.NG</a>. All rights reserved.</span>
+    
   </div>
 </footer>      </div>
     </div>
   </div>
 
   <!-- base js -->
-  <script src="/admin/js/app.js"></script>
-  <script src="/admin/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
+  <script src="../admin/js/app.js"></script>
+  <script src="../admin/assets/plugins/perfect-scrollbar/perfect-scrollbar.min.js"></script>
   <!-- end base js -->
 
   <!-- plugin js -->
@@ -300,9 +299,13 @@
   <script src="/admin/assets/js/settings.js"></script>
   <script src="/admin/assets/js/todolist.js"></script>
   <!-- end common js -->
+  <script src="../admin/assets/js/file-upload.js"></script>
+  <script src="../admin/assets/js/iCheck.js"></script>
+  <script src="../admin/assets/js/select2.js"></script>
+  <script src="../admin/assets/js/typeahead.js"></script>
 
 
-   
+{{--    
    <!-- plugin js -->
      <script src="../admin/assets/plugins/icheck/icheck.min.js"></script>
    <script src="../admin/assets/plugins/select2/js/select2.min.js"></script>
@@ -322,15 +325,15 @@
    <script src="../admin/assets/js/select2.js"></script>
    <script src="../admin/assets/js/typeahead.js"></script>
 
-    <script src="/admin/assets/js/dashboard.js"></script>
-    <script src="../admin/assets/js/data-table.js"></script>
+    <script src="../admin/assets/js/dashboard.js"></script>
+    <script src="../admin/assets/js/data-table.js"></script> --}}
 
-   <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script>
-<script type="text/javascript">
+   {{-- <script src="//cdn.ckeditor.com/4.14.0/standard/ckeditor.js"></script> --}}
+{{-- <script type="text/javascript">
     $(document).ready(function() {
        $('.ckeditor').ckeditor();
     });
-</script>
+</script> --}}
 </body>
 
 <!-- Mirrored from www.bootstrapdash.com/demo/justdo-laravel-pro/template/vertical-default-dark/ by HTTrack Website Copier/3.x [XR&CO'2014], Mon, 07 Nov 2022 11:19:42 GMT -->

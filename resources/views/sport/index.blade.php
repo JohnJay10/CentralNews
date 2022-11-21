@@ -17,8 +17,8 @@
         
             <div class="row">
               <div class="col-lg-8">
-                @if( count($sport) > 0 )
-                @foreach($sport as $sport)
+                @if( count($sports) > 0 )
+                @foreach($sports as $sport)
                 <div class="row">
                  
                   <div class="col-sm-4 grid-margin">
@@ -40,17 +40,20 @@
                       <span class="mr-2">Photo </span>{{$sport -> created_at}}
                     </p>
                     <p class="fs-15">
-                      {{$sport-> body}}
+                      {{$sport-> preview}}
                     </p>
+                   
                   </div>
+               
                 </div>
                 @endforeach
 
                 @else
                 @endif
-               
+                {{$sports->links()}}
               </div>
-              
+             
+            
               
               <div class="col-lg-4">
                 <h2 class="mb-4 text-primary font-weight-600">

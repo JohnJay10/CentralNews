@@ -8,6 +8,25 @@ use App\Politics;
 
 class LatestNewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=> ['index','show']]);
+    }
+
+
+
+    public function latestnewsview(){
+        // $politics = Politics::all();
+        // return view('politicsview',['politics'=> $politics]);
+
+        // $politics = Politics::latest()->paginate(3);
+        // return view('politicsview', compact('politics'))
+        // ->with('i', (request()->input('page', 1) - 1) *3);
+
+        $latestnews = LatestNews::paginate(3);
+        return view('latestnewsview',compact('latestnews'));
+        
+    }
     /**
      * Display a listing of the resource.
      *
@@ -41,6 +60,7 @@ class LatestNewsController extends Controller
         $request->validate([
             'title'=>'required',
             'body' =>'required',
+            'preview' =>'required',
             'image' =>'image|nullable|max:1999|required', 
         ]);
 
@@ -61,6 +81,7 @@ class LatestNewsController extends Controller
         //  $latestnews->user_id = auth()->user()->id;
          $latestnews ->title =$request->input('title');
           $latestnews->body = $request->input('body');
+          $latestnews->preview = $request->input('preview');
           $latestnews->image =$fileNameToStore;
         
           $latestnews-> save();
@@ -86,7 +107,8 @@ class LatestNewsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $latestnews = LatestNews::find($id);
+        return view ('latestnews.edit')->with('latestnews',$latestnews);
     }
 
     /**
@@ -98,7 +120,40 @@ class LatestNewsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'body' =>'required',
+            'preview'=> 'required',
+            'image' =>'image|nullable|max:1999', 
+        ]);
+
+        /**Handle File Upload */
+
+
+        if($request->hasFile('image')){
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename .'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        }else{
+            $fileNameToStore ='noimage.jpeg';
+        }
+
+
+         $latestnews = LatestNews::findOrFail($id);
+         $latestnews->user_id = auth()->user()->id;
+         $latestnews ->title =$request->input('title');
+          $latestnews->body = $request->input('body');
+          $latestnews->preview = $request->input('preview');
+
+          if($request->hasFile('image')){
+            $latestnews->image = $fileNameToStore;
+            }
+  
+          
+          $latestnews-> save();
+          return redirect('/latestnewsview')->with ('success','Latest News Successfully Updated');
     }
 
     /**
@@ -109,6 +164,9 @@ class LatestNewsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $latestnews = LatestNews::find($id);
+       $latestnews->delete();
+
+       return redirect('latestnewsview')->with ('success','Latestnews Successfully Deleted');
     }
 }

@@ -18,28 +18,38 @@
             <tr>
               <th>s/n</th>
               <th>title </th>
-              
-              <th>Actions</th>
+              <th>EDIT FUNCTION</th>
+              <th>DELETE FUNCTION</th>
             </tr>
           </thead>
           <tbody>
             @foreach($politics as $politics)
             <tr>
-              <td>i++</td>
+              <td>{{$politics->id}}</td>
               <td>{{$politics->title}}</td>
               
 
               <td>
-                <a href=""> <i class="fa fa-edit text-blue">Edit</i></a> /
-                <a href=""> <i class="fa fa-trash "></i>Delete</a>
+
+               
+                <a href="/politics/{{$politics->id}}/edit"> 
+                  <input type="submit" value="edit" class="btn btn-primary ">
+                </a> 
+              
               </td>
               <td>
+
+                <form action="/politics/{{$politics->id}}" method="POST">
+                  @csrf
+                 {{method_field('DELETE')}}
                 
-               
+                 <input type="submit" name ="submit" value ="delete" class="btn btn-danger">
+              </form>
               </td>
+             
             </tr>
             @endforeach
-            {{-- {{ $politics->links()  }}  --}}
+            {{-- {{ $politics->links()  }}   --}}
           </tbody>
           @else
           <p>You Have no post</p>

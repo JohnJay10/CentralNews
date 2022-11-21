@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Session;
 use App\Politics;
 use App\LatestNews;
 
@@ -14,6 +16,15 @@ class PoliticsController extends Controller
      * @return \Illuminate\Http\Response
      */
 
+        /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth', ['except'=> ['index','show']]);
+    }
 
 
     public function politicsview(){
@@ -27,7 +38,7 @@ class PoliticsController extends Controller
         $politics = Politics::paginate(3);
         return view('politicsview',compact('politics'));
         
-    }
+    }   
 
 
     public function index()
@@ -85,6 +96,7 @@ class PoliticsController extends Controller
          $politics ->title =$request->input('title');
           $politics->body = $request->input('body');
           $politics->preview = $request->input('preview');
+          $politics->user_id = auth()->user()->id;
           $politics->image =$fileNameToStore;
         
           $politics-> save();
@@ -111,7 +123,8 @@ class PoliticsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $politics = Politics::find($id);
+        return view ('politics.edit')->with('politics',$politics);
     }
 
     /**
@@ -123,7 +136,40 @@ class PoliticsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'title'=>'required',
+            'body' =>'required',
+            'preview'=> 'required',
+            'image' =>'image|nullable|max:1999', 
+        ]);
+
+        /**Handle File Upload */
+
+
+        if($request->hasFile('image')){
+            $filenameWithExt = $request->file('image')->getClientOriginalName();
+            $filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
+            $extension = $request->file('image')->getClientOriginalExtension();
+            $fileNameToStore = $filename .'_'.time().'.'.$extension;
+            $path = $request->file('image')->storeAs('public/image', $fileNameToStore);
+        }else{
+            $fileNameToStore ='noimage.jpeg';
+        }
+
+
+         $politics = Politics::findOrFail($id);
+         $politics->user_id = auth()->user()->id;
+         $politics ->title =$request->input('title');
+          $politics->body = $request->input('body');
+          $politics->preview = $request->input('preview');
+
+          if($request->hasFile('image')){
+            $politics->image = $fileNameToStore;
+            }
+  
+          
+          $politics-> save();
+          return redirect('/politicsview')->with ('success','Politics Successfully Updated');
     }
 
     /**
@@ -134,6 +180,11 @@ class PoliticsController extends Controller
      */
     public function destroy($id)
     {
-        //
+
+       $politic = Politics::find($id);
+       $politic->delete();
+
+       return redirect('politicsview')->with ('success','Politics Successfully Deleted');
+
     }
 }

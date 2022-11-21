@@ -84,13 +84,13 @@
           <div class="card">
             <div class="card-body">
               @if( count($politics) > 0 )
-              @foreach($politics as $politics)
+              @foreach($politics as $politic)
               <div class="row">
                 <div class="col-sm-4 grid-margin">
                   <div class="position-relative">
                     <div class="rotate-img">
                       <img
-                        src="/storage/image/{{$politics->image}}"
+                        src="/storage/image/{{$politic->image}}"
                         alt="thumb"
                         class="img-fluid"
                       >
@@ -103,16 +103,18 @@
                 </div>
                 <div class="col-sm-8  grid-margin">
                   <h2 class="mb-2 font-weight-600">
-                    {{$politics-> title}}
+                    <a class="navbar" href="/politics/{{$politic->id}}">
+                      {{$politic-> title}}</a>
                   </h2>
                   <div class="fs-13 mb-2">
-                    <span class="mr-2">Photo </span>{{$politics -> created_at}}
+                    <span class="mr-2">Photo </span>{{$politic -> created_at}}
                   </div>
                   <p class="mb-0">
-                    {{$politics-> preview}}
+                    {{$politic-> preview}}
 
                   </p>
                 </div>
+               
               </div>
 
               @endforeach
@@ -120,9 +122,11 @@
               @else
               @endif
 
-              
+              {{-- {{$politics->links()}} --}}
             </div>
           </div>
+
+         
         </div>
       </div>
       

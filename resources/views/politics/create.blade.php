@@ -5,12 +5,12 @@
     <div class="card">
       <div class="card-body">
         
-        <h2 class="card-description" style="font: 500;">
+        <h3 class="card-description" style="font: 500;">
          CREATE POLITICS POST
-        </h2>
+        </h3>
         <form class="forms-sample" method="POST" action="{{ route('politics.store') }}" enctype="multipart/form-data">
             {{ csrf_field() }}
-          <div class="form-group">
+          <div class="form-group">   
             <label for="exampleInputName1">Title</label>
             <input type="text" class="form-control" id="exampleInputName1" placeholder="Title of your post" name="title" required>
           </div>

@@ -25,6 +25,10 @@
               </span>
             </div>
           </div>
+          <div class="form-group">
+            <label for="exampleTextarea1">preview</label>
+            <textarea class="  form-control" name="preview" id="exampleTextarea1" rows="4" required></textarea>
+          </div>
         
           <div class="form-group">
             <label for="exampleTextarea1">Textarea</label>

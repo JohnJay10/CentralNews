@@ -23,7 +23,8 @@ Route::get('/sport', 'PagesController@sport')->name('sport');
 // Route::get('/politics', 'PagesController@politics')->name('politics');
 Route::get('/contact', 'PagesController@contact')->name('contact-us');
 Route::get('/politicsview', 'PoliticsController@politicsview')->name('politicsview');
-// Route::get('/latestnews', 'LatestNewsController@latestnews')->name('politicsview');
+ Route::get('/latestnewsview', 'LatestNewsController@latestnewsview')->name('latestnewsview');
+ Route::get('/sportview', 'SportController@sportview')->name('sportview');
 
 
 /* Politics Controller*/
@@ -43,4 +44,4 @@ Route::resource('sport','SportController');
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-// Route::get('/admindashboard', 'AdminDashboardController@index')->name('dashboard');
+
