@@ -9,6 +9,9 @@
       <div class="card">
 <div class="card-body">
 <h4 class="card-title">All Sport Post</h4>
+<a href="/sport/create"> 
+  <input type="submit" value="Create Sport Post" class="btn btn-primary ">
+</a> 
 <div class="row">
   <div class="col-12">
     <div class="table-responsive">

@@ -34,4 +34,12 @@ class PagesController extends Controller
     // public function politicsview(){
     //     return view('politicsview');
     // }
+
+    public function getMorePol(Request $request){
+        
+        if($request->ajax()){
+             $politics = Politics::latest()->paginate(3);
+          return view('pages.index',compact('politics'))->render();
+        } 
+    }
 }

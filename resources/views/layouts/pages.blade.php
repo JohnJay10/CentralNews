@@ -230,14 +230,16 @@ sup {
 }
 
 a {
-  color: #007bff;
+  font-weight: 600;
+  font-family:Roboto;
+  color: black;
   text-decoration: none;
   background-color: transparent;
 }
 
 a:hover {
-  color: #0056b3;
-  text-decoration: underline;
+  color: #f3d632;
+  text-decoration: none;
 }
 
 a:not([href]):not([class]) {
@@ -443,6 +445,7 @@ h1, .h1 {
 
 h2, .h2 {
   font-size: 2rem;
+  
 }
 
 h3, .h3 {
@@ -550,6 +553,8 @@ mark,
 .img-fluid {
   max-width: 100%;
   height: auto;
+  opacity: 1.5;
+  background: black;
 }
 
 .img-thumbnail {
@@ -4057,6 +4062,7 @@ input[type="button"].btn-block {
 .nav-link {
   display: block;
   padding: 0.5rem 1rem;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .nav-link:hover, .nav-link:focus {
@@ -4139,18 +4145,18 @@ input[type="button"].btn-block {
   position: relative;
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
   padding: 0px 0px;
   font-family: 'Sono', sans-serif;
-  font-size: 16px;
+  font-size: 25px;
 }
 
 .navbar .container,
 .navbar .container-fluid, .navbar .container-sm, .navbar .container-md, .navbar .container-lg, .navbar .container-xl {
   display: flex;
   flex-wrap: wrap;
-  align-items: center;
+  align-items: left;
   justify-content: space-between;
 }
 
@@ -4158,7 +4164,7 @@ input[type="button"].btn-block {
   display: inline-block;
   padding-top: 0.3125rem;
   padding-bottom: 0.3125rem;
-  margin-right: 38px;
+  margin-right: px;
   font-size: 1.25rem;
   line-height: inherit;
   white-space: nowrap;
@@ -4561,6 +4567,7 @@ input[type="button"].btn-block {
 .card-body {
   flex: 1 1 auto;
   min-height: 1px;
+  max-width: 100%;
   padding: 1.25rem;
 }
 
@@ -4788,6 +4795,7 @@ input[type="button"].btn-block {
   padding-left: 0;
   list-style: none;
   border-radius: 0.25rem;
+  align-items: center;
 }
 
 .page-link {
@@ -4796,9 +4804,11 @@ input[type="button"].btn-block {
   padding: 0.5rem 0.75rem;
   margin-left: -1px;
   line-height: 1.25;
-  color: #007bff;
+  /*color: #007bff;*/
+  color: #F9D71E;
   background-color: #fff;
-  border: 1px solid #dee2e6;
+  border: 4px solid #dee2e6;
+  border-radius: 5px;
 }
 
 .page-link:hover {
@@ -4829,8 +4839,8 @@ input[type="button"].btn-block {
 .page-item.active .page-link {
   z-index: 3;
   color: #fff;
-  background-color: #007bff;
-  border-color: #007bff;
+  background-color: #F9D71E;
+  border-color: black;
 }
 
 .page-item.disabled .page-link {
@@ -4842,35 +4852,35 @@ input[type="button"].btn-block {
 }
 
 .pagination-lg .page-link {
-  padding: 0.75rem 1.5rem;
+  padding: 2rem 2rem;
   font-size: 1.25rem;
   line-height: 1.5;
 }
 
 .pagination-lg .page-item:first-child .page-link {
-  border-top-left-radius: 0.3rem;
-  border-bottom-left-radius: 0.3rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
 }
 
 .pagination-lg .page-item:last-child .page-link {
-  border-top-right-radius: 0.3rem;
-  border-bottom-right-radius: 0.3rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .pagination-sm .page-link {
-  padding: 0.25rem 0.5rem;
+  padding: 2rem 2rem;
   font-size: 0.875rem;
   line-height: 1.5;
 }
 
 .pagination-sm .page-item:first-child .page-link {
-  border-top-left-radius: 0.2rem;
-  border-bottom-left-radius: 0.2rem;
+  border-top-left-radius: 2rem;
+  border-bottom-left-radius: 2rem;
 }
 
 .pagination-sm .page-item:last-child .page-link {
-  border-top-right-radius: 0.2rem;
-  border-bottom-right-radius: 0.2rem;
+  border-top-right-radius: 2rem;
+  border-bottom-right-radius: 2rem;
 }
 
 .badge {
@@ -5018,7 +5028,7 @@ a.badge-light:focus, a.badge-light.focus {
 
 .badge-dark {
   color: #fff;
-  background-color: #000000;
+  background-color: #e60000;
 }
 
 a.badge-dark:hover, a.badge-dark:focus {
@@ -9968,24 +9978,27 @@ h6, .h6 {
 
 /* Pagination */
 .pagination {
-  padding-bottom: 100px;
-  padding-top: 92px;
+  padding-bottom: 15px;
+  padding-top: 15px;
+  align-items: center;
 }
 
 .pagination .page-item .page-link {
   border-color: #e6e7e8;
   color: #ababac;
   font-size: 14px;
-  font-weight: 500;
-  padding: 15px 64px;
+  font-weight: 40;
+  padding: 15px 15px;
+  
 }
 
 .pagination .page-item .active {
-  color: #007bff;
+  color: black;
 }
 
 .pagination .page-item.active .page-link, .pagination .page-item:hover .page-link, .pagination .page-item:focus .page-link, .pagination .page-item:active .page-link {
-  color: #007bff;
+  /*color: yellow;*/
+  color: black;/*font color*/
 }
 
 /* Buttons */
@@ -10370,7 +10383,7 @@ header .navbar-top .navbar-top-right-menu .nav-item .nav-link {
 
 header .navbar-top .navbar-top-left-menu .nav-item .nav-link:hover,
 header .navbar-top .navbar-top-right-menu .nav-item .nav-link:hover {
-  color: yellow;
+  color: #F9D71E;
 }
 
 header .navbar-top .navbar-top-left-menu .nav-item .nav-link:after,
@@ -10448,7 +10461,7 @@ header .navbar-bottom .navbar-nav .nav-item .nav-link {
 }
 
 header .navbar-bottom .navbar-nav .nav-item .nav-link:hover {
-  color: yellow;
+  color: #F9D71E;
 }
 
 @media (max-width: 999px) {
@@ -10619,7 +10632,8 @@ header .navbar-bottom .navbar-toggler {
 }
 
 .img-lg {
-  width: 138px;
+  width: 180px;
+  height: 90px;
 }
 
 .img-sm {
@@ -10681,7 +10695,7 @@ header .navbar-bottom .navbar-toggler {
 
 .content-wrapper .banner-content {
   position: absolute;
-  padding: 40px 60px;
+  padding: 20px 30px;
   left: 0px;
   bottom: 0px;
   color: white;
@@ -10690,7 +10704,7 @@ header .navbar-bottom .navbar-toggler {
 
 @media (max-width: 999px) {
   .content-wrapper .banner-content {
-    padding: 12px 12px;
+    padding: 5px 5px;
   }
   .content-wrapper .banner-content h1 {
     font-size: 18px;
@@ -10988,7 +11002,88 @@ footer .footer-bottom {
 }
 
 /*# sourceMappingURL=maps/style.css.map */
+.tinker{
+  position:relative;  
+  margin: auto;
+  align-items: center;
+  padding-left: 200px;
+  
+ 
+}
 
+.bigheading{
+  display: block;
+  border-width:78px;
+  color: white;
+  position: absolute;
+  font-style: italic;
+  font-size: 70px;
+  background: #e60000;
+  text-transform:uppercase;
+  padding: 26px;
+  letter-spacing: 3px;
+  font-weight: 700;
+  z-index: 2;
+    
+}
+
+.bigheading::after,
+.bigheading::before{
+    content:'';
+    width:0;
+    position: absolute;
+    border-width:78px;
+    border-style:solid;
+    top:0;
+    z-index: -1;
+}
+.bigheading::before{
+  border-color: #e60000 transparent transparent 
+  transparent;
+  right: -78px;  
+}
+
+.bigheading::after{
+  border-color: transparent transparent #e60000 
+  transparent;
+  left: -78px;  
+  top: -78px;
+}
+
+
+ .updatetext{
+  height: 60px;
+  background:#0056b3;
+  overflor: hidden;
+  color: white;
+  text-transform: uppercase;
+  postition: relative; 
+  letter-spacing: 1px;
+  font-size: 25px;
+  display: flex;
+  align-items: center;
+  left: 12px;
+  
+}
+.updatetext p{
+   
+  width: 150%;
+  margin :0;
+  font-weight: 700;
+  text-align: left; 
+
+  transform: translatex(100%);
+  animation: moving 25s linear infinite 
+}
+
+@keyframes moving{
+  0%{
+    transform: translateX(100%);
+  }
+  100%{
+    transform: translateX(-100%);
+  }
+}
     </style>
     <!--copied all the style here-->
   </head>
@@ -11020,7 +11115,7 @@ footer .footer-bottom {
                 <div class="d-flex justify-content-between align-items-center">
                   <div>
                      <a class="navbar-brand" href="{{ route('homepage') }}"
-                      ><img style="height: 60px; width: 105%;" src="/site/assets/images/logo3.png" alt=""
+                      ><img style="height: 37px; width: 100px;" src="/site/assets/images/logo3.png" alt=""
                     /></a> 
                   </div>
                   <div>
@@ -11047,19 +11142,21 @@ footer .footer-bottom {
                         <li class="nav-item active" style="font-family: 'Sono', sans-serif;">
                           <a class="nav-link" href="{{ route('homepage') }}">Home</a>
                         </li>
-                       
+                        @forelse($categories as $category)
                         <li class="nav-item">
-                          <a class="nav-link" href="{{ route('sport.index') }}">Sports</a>
+                          <a class="nav-link" href="{{route('category-post', [$category->slug])}}">
+                            {{$category->name}}</a>
                         </li>
+                    @empty
+                    @endforelse
+                        
                     
-                        <li class="nav-item">
-                          <a class="nav-link" href="{{ route('politics.index') }}">POLITICS</a>
-                        </li> 
                        
-                        <li class="nav-item">
-                          <a class="nav-link" href="#">dailywahala</a>
+                       
+                         <li class="nav-item">
+                          <a class="nav-link" href="https://dailywahala.ng/">dailywahala</a>
 
-                        </li>
+                        </li> 
                       </ul>
                     </div>
                   </div>
@@ -11085,15 +11182,30 @@ footer .footer-bottom {
             </nav>
           </div>
         </header>
-
+       
         <!-- partial -->
-        <div class="flash-news-banner">
-          <div class="container">
+        <div class="flash-news-banner ">
+          <div class="container tinker">
             <div class="d-lg-flex align-items-center justify-content-between">
-              <div class="d-flex align-items-center">
-                <span class="badge badge-dark mr-3" >Google Ads</span>
+              <div class="d-flex align-items-center bigheading">
+                <span class="" >Flash News</span>
                 
               </div>
+              @if( count($latest) > 0 )
+            @foreach($latest as $single_post)
+              <div class=" updatetext">
+                <p class="" >{{$single_post->title}}</p>
+                
+              </div>
+              @endforeach
+
+                @else
+                @endif
+              
+            </div>
+          </div>
+          <div class="container">
+            <div class="d-lg-flex align-items-center justify-content-between">
               <h1 class="mb-0">
                 <span class="mr-3 text-danger">{{ date(' H:i:s') }}</span>
           
@@ -11103,6 +11215,7 @@ footer .footer-bottom {
                
                 <span class="text-danger"></span>
               </div>
+              
             </div>
           </div>
         </div>
@@ -11119,7 +11232,7 @@ footer .footer-bottom {
               <div class="row">
                 <div class="col-sm-5">
                   <a class="navbar-brand mb-4" href="{{ route('homepage') }}"
-                  ><img style="height: 50px; width: 100%;" src="/site/assets/images/logo3.png" alt=""
+                  ><img style="height: 50px; width: 110px" src="/site/assets/images/logo3.png" alt=""
                 /></a> 
                  
                   <h5 class="font-weight-normal mt-4 mb-5">
@@ -11144,70 +11257,35 @@ footer .footer-bottom {
                   </ul>
                 </div>
                 <div class="col-sm-4">
-                  <h3 class="font-weight-bold mb-3">RECENT POSTS</h3>
+                  <h3 class="font-weight-bold mb-3">NAVIGATION BAR</h3>
                   <div class="row">
                     <div class="col-sm-12">
                       <div class="footer-border-bottom pb-2">
                         <div class="row">
-                          <div class="col-3">
-                            <img
-                              src="/site/assets/images/dashboard/home_1.jpg"
-                              alt="thumb"
-                              class="img-fluid"
-                            />
-                          </div>
+                        
                           <div class="col-9">
+                              
+                              <a  style="color:white;" href="{{ route('homepage') }}"  >
                             <h5 class="font-weight-600">
-                              Cotton import from USA to soar was American traders
-                              predict
+                              HOME
                             </h5>
+                            </a>
+                            
+                            @forelse($categories as $category)
+                            <a style="color:white;" href="{{route('category-post', [$category->slug])}}"  >
+                              <h5 class="font-weight-600">
+                                {{$category->name}}
+                              </h5>
+                              </a>
+                        @empty
+                        @endforelse
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div class="footer-border-bottom pb-2 pt-2">
-                        <div class="row">
-                          <div class="col-3">
-                            <img
-                              src="/site/assets/images/dashboard/home_2.jpg"
-                              alt="thumb"
-                              class="img-fluid"
-                            />
-                          </div>
-                          <div class="col-9">
-                            <h5 class="font-weight-600">
-                              Cotton import from USA to soar was American traders
-                              predict
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="row">
-                    <div class="col-sm-12">
-                      <div>
-                        <div class="row">
-                          <div class="col-3">
-                            <img
-                              src="/site/assets/images/dashboard/home_3.jpg"
-                              alt="thumb"
-                              class="img-fluid"
-                            />
-                          </div>
-                          <div class="col-9">
-                            <h5 class="font-weight-600 mb-3">
-                              Cotton import from USA to soar was American traders
-                              predict
-                            </h5>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
+                  
+                  
                 </div>
                 <div class="col-sm-3">
                   <h3 class="font-weight-bold mb-3">CATEGORIES</h3>
