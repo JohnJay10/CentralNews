@@ -11192,7 +11192,7 @@ footer .footer-bottom {
                 
               </div>
               @if( count($latest) > 0 )
-            @foreach($latest as $single_post)
+              @foreach($latest as $single_post)
               <div class=" updatetext">
                 <p class="" >{{$single_post->title}}</p>
                 
